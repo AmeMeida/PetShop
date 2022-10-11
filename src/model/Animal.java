@@ -1,12 +1,14 @@
 package model;
 
+import model.enums.ERacas;
+
 public class Animal {
     private int codigo;
     private String tutor;
     private String nome;
-    private String raca;    
+    private ERacas raca;  
     
-    public Animal(int codigo, String tutor, String nome, String raca) {
+    public Animal(int codigo, String tutor, String nome, ERacas raca) {
         setCodigo(codigo);
         setTutor(tutor);
         setNome(nome);
@@ -60,15 +62,18 @@ public class Animal {
         this.nome = checkNome(nome);
     }
 
-    public static String checkRaca(String raca) {
-        return checkString(raca, "Raça");
+    public static ERacas checkRaca(ERacas raca) {
+        if (raca == null)
+            throw new IllegalArgumentException("A raça não deve ser nula.");
+
+        return raca;
     }
 
-    public String getRaca() {
+    public ERacas getRaca() {
         return this.raca;
     }
 
-    public void setRaca(String raca) {
+    public void setRaca(ERacas raca) {
         this.raca = checkRaca(raca);
     }
 
